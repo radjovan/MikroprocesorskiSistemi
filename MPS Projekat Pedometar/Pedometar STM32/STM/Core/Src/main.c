@@ -67,6 +67,7 @@ static void MX_ADC1_Init(void);
   *
   *
   */
+
 int brojKoraka = 0;
 int IzracunatoUbrzanje= 0;
 
@@ -86,13 +87,9 @@ int main(void)
 {
 
   HAL_Init();
-
-
   SystemClock_Config();
-
   MX_GPIO_Init();
   MX_ADC1_Init();
-
   LCD_init();
   float res,rezultat;
 
@@ -101,10 +98,7 @@ int main(void)
 
   while (1)
   {
-
 	  	  HAL_Delay(100);
-
-
 	      HAL_ADC_Start(&hadc1);
 	      HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
 	      res = HAL_ADC_GetValue(&hadc1);
@@ -133,9 +127,6 @@ int main(void)
 
 	      LCD('  ',1);
 	      HAL_Delay(200);
-
-
-
 
   }
   /* USER CODE END 3 */
@@ -180,8 +171,6 @@ void LCD(uint8_t val_1, uint8_t cmd)
 
 	data1 = (val_1 >> 7) & 0x01;
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, data1);
-
-
 
 		//Enable
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_SET);
